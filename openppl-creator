@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # use configuration files for projects
 import os
-import sys
 import logging
+
+from openppl_creator_lib import get_oppl_files
 
 logging.root.setLevel(logging.INFO)
 
@@ -10,35 +11,15 @@ import argparse
 
 DESCRIPTION = "OpenPPL creator is a program to create a .oppl script from different files."
 
-output_file_name = 'output.oppl'
+output_file_name = '{0}.oppl'.format(os.path.split(os.getcwd())[1])
+input_path = 'src'
+output_path = 'out'
 
 
 parser = argparse.ArgumentParser(description=DESCRIPTION)
 
 for debug_arg in ['-d', '--debug']:
     parser.add_argument(debug_arg, dest='debug', action='store_true', help='Set logging level to DEBUG.')
-
-
-
-def get_oppl_files(path):
-    oppl_files = {}
-
-    logging.debug("Current path: %s", path)
-
-    for filename in os.listdir(current_path):
-        if not os.path.isfile(os.path.join(path,filename)): 
-            continue
-
-        filename_without_extension, file_extension = os.path.splitext(filename)
-        if  file_extension != '.oppl':
-            logging.debug("File extension not match: %s", file_extension)
-            continue
-
-        logging.debug("Openning file: %s", filename)
-        with open(filename, 'r') as file_:
-            oppl_files[filename_without_extension] = file_.read()
-
-    return oppl_files
 
 
 if __name__ == '__main__':
@@ -48,18 +29,21 @@ if __name__ == '__main__':
 
     current_path = os.getcwd()
 
-    oppl_files = get_oppl_files(current_path)
+    abs_input_path = os.path.join(current_path, input_path)
 
-    output_path = os.path.join(current_path, 'output')
+    oppl_files = get_oppl_files(abs_input_path)
 
-    if not os.path.exists(output_path):
-        os.makedirs(output_path)
+    abs_output_path = os.path.join(current_path, output_path)
+
+    if not os.path.exists(abs_output_path):
+        os.makedirs(abs_output_path)
 
     scripts = [script for function, script in oppl_files.items()]
     separator = "\n"
     final_script = separator.join( scripts)
 
-    logging.debug("Creating final file: %s", output_file_name)
-    with open(os.path.join(output_path, output_file_name), 'w') as output_file:
+    logging.info("Creating final file: %s", output_file_name)
+    with open(os.path.join(abs_output_path, output_file_name), 'w') as output_file:
         output_file.write(final_script)
 
+    logging.info("Completed!")

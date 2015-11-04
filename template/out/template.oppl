@@ -1,0 +1,126 @@
+##f$preflop##
+##f$test##
+ 
+
+##f$debug##
+##f$flop##
+##f$icm_prize2##
+ 
+
+##f$icm_prize3##
+ 
+
+##f$icm_prize4##
+ 
+
+##f$icm_prize5##
+ 
+
+##f$icm_prize6##
+ 
+
+##f$icm_prize7##
+ 
+
+##f$icm_prize8##
+ 
+
+##f$icm_prize9##
+ 
+##f$sitin##
+0
+
+##f$sitout##
+//autopost hack...
+ 1
+
+##f$leave##
+ 
+
+##f$rematch##
+ 
+
+##f$autopost##
+ 
+
+##f$close##
+ 
+
+##f$rebuy##
+// f$rebuy should evaluate to the target-amount in dollars.
+// This value will be passed to the rebuy-script as a parameter.
+0
+##f$ini_function_on_startup##
+// Ini-functions are meant for
+//   * Initialization of memory-symbols at well-defined times
+//   * Triggering calculations, e.g. in a DLL
+
+
+##f$ini_function_on_connection##
+ 
+
+##f$ini_function_on_handreset##
+ 
+
+##f$ini_function_on_new_round##
+ 
+
+##f$ini_function_on_my_turn##
+ 
+
+##f$ini_function_on_heartbeat##
+ 
+
+
+##f$turn##
+##f$river##
+##f$prwin_number_of_opponents##
+// "Reasonable" default to get standard PrWin running for beginners.
+// Adding one extra opponent has two advantages:
+//   * works even with mis-scraped "no opponents"
+//   * adjusts over-optimistic standard PrWin (random ranges).
+nopponentsplaying + 1
+
+##f$prwin_number_of_iterations##
+// "Reasonable" default to get PrWin running for beginners.
+// Large enough to get usable results,
+// small enough to save CPU-time.
+1000
+
+
+
+##f$prwin_topclip##
+ 
+
+##f$prwin_mustplay##
+ 
+
+##f$prwin_willplay##
+ 
+
+##f$prwin_wontplay##
+ 
+##notes##
+ 
+
+##dll##
+
+##f$prefold##
+ 
+
+##f$chat##
+ 
+
+##f$delay##
+// Autoplayer-delay in milli-seconds
+Random*Random
+
+
+
+
+##f$allin_on_betsize_balance_ratio##
+// Allin if betsize is more than X% of our total balance (including currentbet).
+// This affects f$betsize and all f$betpot_X_Y_ functions.
+//  0.00 =  0% = disabled
+//  0.50 = 50%
+0.00
