@@ -3,7 +3,7 @@
 import os
 import logging
 
-from openppl_creator_lib import get_oppl_files
+from openppl_creator_lib import get_oppl_files, expand_hands
 
 logging.root.setLevel(logging.INFO)
 
@@ -11,10 +11,10 @@ import argparse
 
 DESCRIPTION = "OpenPPL creator is a program to create a .oppl script from different files."
 
-output_file_name = '{0}.oppl'.format(os.path.split(os.getcwd())[1])
 input_path = 'src'
 output_path = 'out'
-
+output_file_name = '{0}.oppl'.format(os.path.split(os.getcwd())[1])
+hand_list_file_name = 'hand_lists'
 
 parser = argparse.ArgumentParser(description=DESCRIPTION)
 
@@ -32,6 +32,9 @@ if __name__ == '__main__':
     abs_input_path = os.path.join(current_path, input_path)
 
     oppl_files = get_oppl_files(abs_input_path)
+
+    if hand_list_file_name in oppl_files:
+        oppl_files[hand_list_file_name] = expand_hands(oppl_files[hand_list_file_name])
 
     abs_output_path = os.path.join(current_path, output_path)
 
