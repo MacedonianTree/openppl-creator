@@ -1,0 +1,26 @@
+##f$prwin_number_of_opponents##
+// "Reasonable" default to get standard PrWin running for beginners.
+// Adding one extra opponent has two advantages:
+//   * works even with mis-scraped "no opponents"
+//   * adjusts over-optimistic standard PrWin (random ranges).
+nopponentsplaying + 1
+
+##f$prwin_number_of_iterations##
+// "Reasonable" default to get PrWin running for beginners.
+// Large enough to get usable results,
+// small enough to save CPU-time.
+1000
+
+
+
+##f$prwin_topclip##
+ 
+
+##f$prwin_mustplay##
+ 
+
+##f$prwin_willplay##
+ 
+
+##f$prwin_wontplay##
+ 

@@ -1,0 +1,23 @@
+##f$sitin##
+0
+
+##f$sitout##
+//autopost hack...
+ 1
+
+##f$leave##
+ 
+
+##f$rematch##
+ 
+
+##f$autopost##
+ 
+
+##f$close##
+ 
+
+##f$rebuy##
+// f$rebuy should evaluate to the target-amount in dollars.
+// This value will be passed to the rebuy-script as a parameter.
+0
