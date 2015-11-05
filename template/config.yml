@@ -1,0 +1,4 @@
+hand_list_file_name: hand_lists
+input_path: src
+output_file_name: template.oppl
+output_path: out
