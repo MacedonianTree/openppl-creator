@@ -19,8 +19,7 @@ def get_oppl_files(path):
             continue
 
         if os.stat(file_path).st_size == 0:
-            logging.debug("File is empty: %s", file_path)
-            continue
+            logging.info("File is empty: %s", file_path)
 
         logging.debug("Openning file: %s", file_path)
         with open(file_path, 'r') as file_:
