@@ -9,7 +9,8 @@ def get_default():
     cfg = {'input_path': 'src',
            'output_path': 'out',
            'output_file_name': '{0}.oppl'.format(os.path.split(os.getcwd())[1]),
-           'hand_list_file_name': 'hand_lists'
+           'hand_list_file_name': 'hand_lists',
+           'add_percentage_hands': True
         }
     return cfg
 

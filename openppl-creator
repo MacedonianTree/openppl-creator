@@ -36,6 +36,8 @@ if __name__ == '__main__':
 
     if cfg['hand_list_file_name'] in oppl_files:
         oppl_files[cfg['hand_list_file_name']] = hands.expand_hands(oppl_files[cfg['hand_list_file_name']])
+        if cfg['add_percentage_hands']:
+            oppl_files[cfg['hand_list_file_name']] = hands.add_percentage_hands(oppl_files[cfg['hand_list_file_name']])
 
     abs_output_path = os.path.join(current_path, cfg['output_path'])
 
