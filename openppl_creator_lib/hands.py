@@ -70,7 +70,7 @@ def add_percentage_hands(script):
     accumulate_combinations_array = numpy.add.accumulate(combinations)
     total_combinations = accumulate_combinations_array[-1]
 
-    for percentage in range(0,100):
+    for percentage in range(0,101):
         hand_combinations = total_combinations * percentage /100
         hand_range_index = get_hand_range_index(hand_combinations, accumulate_combinations_array)
         hand_header = '\n\n##list{0}##\n'.format(percentage)
