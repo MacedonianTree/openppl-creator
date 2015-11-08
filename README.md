@@ -5,7 +5,9 @@ OpenPPL Creator is a tool used to order your openPPL code a bit better.
 ## Features
 - Read your source .oppl and combine it.
 - Accept hands format like 66+ or A5s+.
+- Auto create lists from range 0 to 100.
 - Accept configuration for each openPPL file.
+- Option to calculate and add % range for current hand lists
 
 ## Instalation
 ### Linux

@@ -8,6 +8,7 @@ from openppl_creator_lib import read_files
 from openppl_creator_lib import hands
 from openppl_creator_lib import configuration
 from openppl_creator_lib import cfg
+from openppl_creator_lib import write_files
 
 import argparse
 
@@ -15,8 +16,15 @@ parser = argparse.ArgumentParser(description=openppl_creator_lib.DESCRIPTION)
 
 for debug_arg in ['-d', '--debug']:
     parser.add_argument(debug_arg, dest='debug', action='store_true', help='Set logging level to DEBUG.')
+
 for write_config_arg in ['-c', '--config']:
-    parser.add_argument(write_config_arg, dest='write_config', action='store_true', help='Write default config yaml file.')
+    parser.add_argument(write_config_arg, dest='write_config', action='store_true',
+        help='Write default config yaml file.')
+
+for write_percetanges_arg in ['-p', '--percentages']:
+    parser.add_argument(write_percetanges_arg, dest='write_percetanges', action='store_true',
+        help='Write percentages to defined hand lists in source file')
+
 
 
 if __name__ == '__main__':
@@ -33,6 +41,18 @@ if __name__ == '__main__':
     abs_input_path = os.path.join(current_path, cfg['input_path'])
 
     oppl_files = read_files.get_oppl_files(abs_input_path)
+
+    if args.write_percetanges:
+        if not cfg['hand_list_file_name'] in oppl_files:
+            logging.error('Not hand_list found.')
+            sys.exit("Coudn't write hand list percentages")
+        
+        hand_percentages = hands.get_hands_percentage(hands.expand_hands(oppl_files[cfg['hand_list_file_name']]))
+        hands_file_path = os.path.join(cfg['input_path'], cfg['hand_list_file_name'] + '.oppl')        
+        write_files.hand_lists_percentages(hand_percentages, hands_file_path,
+            oppl_files[cfg['hand_list_file_name']] )
+
+        sys.exit()      
 
     if cfg['hand_list_file_name'] in oppl_files:
         oppl_files[cfg['hand_list_file_name']] = hands.expand_hands(oppl_files[cfg['hand_list_file_name']])
