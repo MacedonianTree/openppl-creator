@@ -10,16 +10,17 @@ def get_oppl_files(path):
     for file_name in os.listdir(path):
         file_path = os.path.join(path, file_name)
 
-        if not os.path.isfile(file_path): 
-            continue
-
-        filename_without_extension, file_extension = os.path.splitext(file_name)
-        if  file_extension != '.oppl':
-            logging.debug("File extension not match: %s", file_extension)
+        if not os.path.isfile(file_path):
+            oppl_files.update(get_oppl_files(file_path))
             continue
 
         if os.stat(file_path).st_size == 0:
             logging.info("File is empty: %s", file_path)
+
+        filename_without_extension, file_extension = os.path.splitext(file_name)
+        if  not file_extension in ['.oppl', '.ohf']:
+            logging.debug("File extension not match: %s", file_extension)
+            continue
 
         logging.debug("Openning file: %s", file_path)
         with open(file_path, 'r') as file_:
